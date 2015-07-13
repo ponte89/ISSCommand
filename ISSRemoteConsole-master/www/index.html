@@ -2,37 +2,39 @@
 <html>
   <head>
     <title>Acceleration Example</title>
-	    
-	<!-- jQuery Mobile Setup -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="libs/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.css" />
-	<script type="text/javascript" charset="utf-8" src="libs/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="libs/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.js"></script>
-	<!-- PhoneGap Setup -->
-    <script type="text/javascript" charset="utf-8" src="libs/phonegap-1.4.1.js"></script>
-    
-    <link rel="stylesheet" href="css/style.css" />
-    <script type="text/javascript" charset="utf-8" src="js/script.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+    }
+
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    function onSuccess(acceleration) {
+        alert('Acceleration X: ' + acceleration.x + '\n' +
+              'Acceleration Y: ' + acceleration.y + '\n' +
+              'Acceleration Z: ' + acceleration.z + '\n' +
+              'Timestamp: '      + acceleration.timestamp + '\n');
+    }
+
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('onError!');
+    }
+
+    </script>
   </head>
   <body>
-  	<div data-role="page" id="acc"> 
-		<div data-role="header" data-position="fixed">
-			<h1>DigitalNoiz</h1>
-		</div> 
-		<div data-role="content">
-			<p>Current acceleration:</p>
-			<div id="accelerometer">Waiting for accelerometer...</div>
-			<a id="startWatch" data-role="button">Start Watching</a>
-			<a id="stopWatch" data-role="button">Stop Watching</a>
-		</div> 
-		<div data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a class="ui-btn-active ui-state-persist">Tech</a></li>
-					<li><a href="object.html">Object</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div> 
-	</div>
+    <h1>Example</h1>
+    <p>getCurrentAcceleration</p>
   </body>
 </html>
