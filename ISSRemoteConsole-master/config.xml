@@ -7,16 +7,23 @@
     <author >
         Lorenzo Pontellini
     </author>
-    <feature name="Accelerometer">
-   	 <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
-	</feature>
+    
     <content src="index.html" />
     <access origin="*" />
+    
+    <gap:platforms>
+        <gap:platform name="android" minVersion="2.1" />
+    </gap:platforms>
+    
     <preference name="Fullscreen" value="true" />
     <gap:plugin name="com.kumbe.phonegap.zoom.zoomcontrol" version="0.1.7" />
     <gap:plugin name="Accelerometer" value="org.apache.cordova.core.AccelListener" />
 	<gap:plugin name="Compass" value="org.apache.cordova.core.CompassListener" />
 	<gap:plugin name="Geolocation" value="org.apache.cordova.core.GeoBroker" />
-	<gap:plugin name="org.apache.cordova.device-motion" />
-	<gap:plugin name="org.apache.cordova.device-orientation" />
+	
+	<feature name="Accelerometer">
+   	 <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+	</feature>
+	
+	<plugin name="Accelerometer" value="org.apache.cordova.AccelListener" />
 </widget>
